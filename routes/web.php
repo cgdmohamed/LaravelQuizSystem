@@ -7,11 +7,16 @@ use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 });
 
 
 Route::resource('quizzes', QuizController::class);
+
+
+// Handle exports and imports
+Route::get('/quizzes/export', [QuizController::class, 'export'])->name('quizzes.export');
+Route::post('/quizzes/import', [QuizController::class, 'import'])->name('quizzes.import');
 
 // Routes for taking and submitting quizzes
 Route::get('/quizzes/{quiz}/take', [QuizController::class, 'showQuiz'])->name('quizzes.take');

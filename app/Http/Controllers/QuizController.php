@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Quiz;
 use App\Models\Question;
 use App\Services\QuizService;
+use App\Exports\QuestionsExport;
+use App\Imports\QuestionsImport;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Log;
+
 
 class QuizController extends Controller
 {
@@ -98,5 +103,26 @@ class QuizController extends Controller
         $this->quizService->updateQuestion($request, $quiz, $question);
 
         return redirect()->route('quizzes.questions.index', $quiz)->with('success', 'Question updated successfully');
+    }
+
+    /**
+     * Import and export methods
+     */
+    public function exportQuestions()
+    {
+        dd('Export questions method accessed.');
+        return Excel::download(new QuestionsExport, 'questions.xlsx');
+    }
+
+    public function importQuestions(Request $request)
+    {
+        dd('Import questions method accessed.');
+        $request->validate([
+            'file' => 'required|mimes:xlsx'
+        ]);
+
+        Excel::import(new QuestionsImport, $request->file('file'));
+
+        return back()->with('success', 'Questions imported successfully.');
     }
 }
