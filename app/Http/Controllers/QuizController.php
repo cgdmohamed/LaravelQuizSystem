@@ -10,6 +10,8 @@ use App\Exports\QuestionsExport;
 use App\Imports\QuestionsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Log;
+use App\Exports\QuestionsTemplateExport;
+
 
 
 class QuizController extends Controller
@@ -108,15 +110,13 @@ class QuizController extends Controller
     /**
      * Import and export methods
      */
-    public function exportQuestions()
+    public function export()
     {
-        dd('Export questions method accessed.');
         return Excel::download(new QuestionsExport, 'questions.xlsx');
     }
 
-    public function importQuestions(Request $request)
+    public function import(Request $request)
     {
-        dd('Import questions method accessed.');
         $request->validate([
             'file' => 'required|mimes:xlsx'
         ]);
@@ -124,5 +124,14 @@ class QuizController extends Controller
         Excel::import(new QuestionsImport, $request->file('file'));
 
         return back()->with('success', 'Questions imported successfully.');
+    }
+    public function showImportForm()
+    {
+        return view('quizzes.import');
+    }
+
+    public function downloadTemplate()
+    {
+        return Excel::download(new QuestionsTemplateExport, 'questions_template.xlsx');
     }
 }

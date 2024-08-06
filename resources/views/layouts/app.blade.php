@@ -23,7 +23,7 @@
                 <a href="{{ route('quizzes.index') }}" class="text-white">Quizzes</a>
                 <a href="{{ route('quizzes.create') }}" class="text-white">Create Quiz</a>
                 <a href="{{ route('quizzes.export') }}" class="text-white">Export Questions</a>
-                <a href="{{ route('quizzes.import') }}" class="text-white">Import Questions</a>
+                <a href="{{ route('quizzes.showImportForm') }}" class="text-white">Import Questions</a>
             </div>
         </div>
     </nav>

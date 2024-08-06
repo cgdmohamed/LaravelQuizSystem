@@ -10,6 +10,22 @@
             </div>
         @endif
 
+        @if ($errors->any())
+            <div class="bg-red-500 text-white p-2 rounded mb-4">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <div class="mb-4">
+            <a href="{{ route('quizzes.downloadTemplate') }}"
+                class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Download
+                Template</a>
+        </div>
+
         <form action="{{ route('quizzes.import') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
             @csrf
             <div>

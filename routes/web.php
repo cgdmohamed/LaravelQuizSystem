@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\QuestionController;
-use App\Http\Controllers\AnswerController;
-use App\Http\Controllers\UserController;
+use App\Models\Question;
+
+//use App\Http\Controllers\AnswerController;
+//use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('layouts.app');
@@ -15,8 +17,12 @@ Route::resource('quizzes', QuizController::class);
 
 
 // Handle exports and imports
-Route::get('/quizzes/export', [QuizController::class, 'export'])->name('quizzes.export');
-Route::post('/quizzes/import', [QuizController::class, 'import'])->name('quizzes.import');
+Route::get('/import', [QuizController::class, 'showImportForm'])->name('quizzes.showImportForm');
+Route::post('/import', [QuizController::class, 'import'])->name('quizzes.import');
+Route::get('/export', [QuizController::class, 'export'])->name('quizzes.export');
+Route::get('/template', [QuizController::class, 'downloadTemplate'])->name('quizzes.downloadTemplate');
+
+
 
 // Routes for taking and submitting quizzes
 Route::get('/quizzes/{quiz}/take', [QuizController::class, 'showQuiz'])->name('quizzes.take');
