@@ -1,4 +1,3 @@
-<!-- resources/views/layouts/app.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,30 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Application</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles can go here */
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body class="bg-gray-100">
-    <nav class="bg-white p-4 shadow-md">
-        <div class="container mx-auto">
-            <a href="{{ route('quizzes.index') }}" class="text-blue-500">Quizzes</a>
-        </div>
-    </nav>
-    <nav class="bg-gray-800 p-2">
-        <div class="container mx-auto flex justify-between">
+    <!-- Top Navigation Bar -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto flex items-center justify-between p-4">
+            <a href="{{ route('quizzes.index') }}" class="text-blue-500 font-bold text-lg">Quiz App</a>
             <div class="flex space-x-4">
-                <!-- Primary Navigation Links -->
-                <a href="{{ url('/') }}" class="text-white">Home</a>
-                <a href="{{ route('quizzes.index') }}" class="text-white">Quizzes</a>
-                <a href="{{ route('quizzes.create') }}" class="text-white">Create Quiz</a>
-                <a href="{{ route('quizzes.export') }}" class="text-white">Export Questions</a>
-                <a href="{{ route('quizzes.showImportForm') }}" class="text-white">Import Questions</a>
+                <a href="{{ url('/') }}" class="text-gray-700 hover:text-blue-600 nav-link">Home</a>
+                <a href="{{ route('quizzes.index') }}" class="text-gray-700 hover:text-blue-600 nav-link">Quizzes</a>
+                <a href="{{ route('quizzes.create') }}" class="text-gray-700 hover:text-blue-600 nav-link">Create
+                    Quiz</a>
+                <a href="{{ route('quizzes.export') }}" class="text-gray-700 hover:text-blue-600 nav-link">Export
+                    Questions</a>
+                <a href="{{ route('quizzes.showImportForm') }}"
+                    class="text-gray-700 hover:text-blue-600 nav-link">Import Questions</a>
             </div>
         </div>
     </nav>
 
-    <main class="container mx-auto p-4">
+    <!-- Main Content -->
+    <main class="container mx-auto p-6">
         @yield('content')
     </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p class="text-sm">&copy; {{ date('Y') }} Quiz Application. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 
 </html>

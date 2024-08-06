@@ -14,6 +14,8 @@ Route::get('/', function () {
 
 
 Route::resource('quizzes', QuizController::class);
+Route::resource('quizzes.questions', QuestionController::class)->except(['show']);
+
 
 
 // Handle exports and imports
@@ -27,6 +29,8 @@ Route::get('/template', [QuizController::class, 'downloadTemplate'])->name('quiz
 // Routes for taking and submitting quizzes
 Route::get('/quizzes/{quiz}/take', [QuizController::class, 'showQuiz'])->name('quizzes.take');
 Route::post('/quizzes/{quiz}/submit', [QuizController::class, 'submitQuiz'])->name('quizzes.submit');
+
+
 
 // Routes for managing questions within a quiz
 Route::get('/quizzes/{quiz}/questions', [QuizController::class, 'indexQuestions'])->name('quizzes.questions.index');

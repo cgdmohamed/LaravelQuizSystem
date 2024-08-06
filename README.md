@@ -9,6 +9,19 @@ A Laravel-based quiz management system that allows administrators to create quiz
 - Import and export questions and answers using Excel files.
 - Easy management of questions and answers.
 
+## Screenshots
+
+Here are some screenshots of the application:
+
+- **Quiz Import Page**
+
+  ![Quiz Import Page](screenshots/quiz.test_quizzes.png)
+  ![Quiz Import Page](screenshots/quiz.test_quizzes_create.png)
+  ![Quiz Import Page](screenshots/quiz.test_quizzes_2_submit.png)
+  ![Quiz Import Page](screenshots/quiz.test_quizzes_2.png)
+  ![Quiz Import Page](screenshots/quiz.test_import.png)
+
+
 ## Installation
 
 1. Clone the repository:

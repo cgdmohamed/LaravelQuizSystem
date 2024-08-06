@@ -1,17 +1,26 @@
-<!-- resources/views/quizzes/edit.blade.php -->
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto p-4">
-        <h1 class="text-2xl font-bold">Edit Quiz</h1>
-        <form action="{{ route('quizzes.update', $quiz) }}" method="POST" class="mt-4">
+    <div class="container mx-auto p-6 bg-white rounded-lg shadow-md">
+        <h1 class="text-3xl font-bold text-gray-900 mb-6">Edit Quiz</h1>
+
+        <form action="{{ route('quizzes.update', $quiz) }}" method="POST" class="space-y-6">
             @csrf
             @method('PUT')
+
+            <!-- Title Field -->
             <div class="mb-4">
-                <label for="title" class="block text-gray-700">Title:</label>
-                <input type="text" name="title" id="title" class="w-full px-4 py-2 border rounded-lg" value="{{ $quiz->title }}" required>
+                <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+                <input type="text" name="title" id="title"
+                    class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    value="{{ $quiz->title }}" required>
             </div>
-            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Update</button>
+
+            <!-- Submit Button -->
+            <button type="submit"
+                class="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                Update
+            </button>
         </form>
     </div>
 @endsection
